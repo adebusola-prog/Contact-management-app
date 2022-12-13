@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style-edit.css' %}">
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/6b20b1c14d.js" crossorigin="anonymous"></script>
+	<title>Edit Contact</title>
+</head>
+<body>
+
+	<div class="container">
+		<header class="hero">
+			
+			<a href="{% url 'contact_list' %}">
+			     <i class="fas fa-chevron-circle-left back-btn"></i>
+			</a>
+
+			<div class="hero-info">
+				<h4 class="name">edit profile</h4>
+				<h1 class="name">{{profile.first_name}} {{profile.last_name}}</h1>
+				<p class="relationship-hero">{{profile.relationship}}</p>
+			</div>
+		</header>
+<form method ="POST" >
+	{% csrf_token %}
+		<section class="contact-info">
+			
+			<div class="info-line">
+				<i class="fas fa-phone icon-gradient"></i>
+				<input type="text" class="type" name="first_name" placeholder="last_ Name"
+				value="{{profile.first_name}}">
+				
+			</div>
+
+			<div class="info-line">
+				<i class="fas fa-phone icon-gradient"></i>
+				<input type="text" class="type" name="last_name" placeholder="last Name"
+				value="{{profile.last_name}}">
+				
+			</div>
+
+			<div class="info-line">
+				<i class="fas fa-user-circle icon-gradient"></i>
+				<input type="text" class="type" name="relationship" placeholder="Relationship"
+				value="{{profile.relationship}}">
+			</div>
+
+		
+
+			<div class="info-line">
+				<i class="fas fa-sms icon-gradient"></i>
+				<input type="text" class="type" name="phone_number" placeholder="Phone Number"
+				value="{{profile.phone_number}}">
+			</div>
+
+			
+
+			<div  class="info-line">
+				<i class="fas fa-envelope icon-gradient"></i>
+				<input type="text" class="type" name="email" placeholder="Email"
+				value="{{profile.email}}">
+			</div>
+
+			
+
+			<div class="info-line">
+				<i class="fas fa-map-marker-alt icon-gradient location"></i>
+				<input type="text" class="type" name="address" placeholder="Address"
+				value="{{profile.address}}">
+			</div>
+			
+		</section>
+
+		<section class="button-container">
+			<div class="update-contact">
+				<i  class="fas fa-check-circle icon-gradient"></i>
+				<!-- <input type="submit" value= 'Save Contact'/> -->
+				<button class="button">Save Contact</button>
+			</div>
+		</section>
+
+		<section class="button-container"> 
+			<a href="{% url 'delete_contact' profile.pk %}">
+				<div class="update-contact">
+					<i class="fas fa-trash icon-gradient"></i>
+					<button class="button">Delete Contact</button>
+				</div>
+			</a>
+		</section>
+	</div>
+</form>
+
+</body>
+</html>

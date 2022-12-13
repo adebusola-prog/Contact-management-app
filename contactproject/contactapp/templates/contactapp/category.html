@@ -1,0 +1,4 @@
+{% for contact in category.profile_set.all %}
+   <li>{{contact.phone_number}}</li>
+   <li>{{contact.first_name}}</li>
+{% endfor %}
